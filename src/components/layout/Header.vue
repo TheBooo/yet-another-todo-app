@@ -1,10 +1,17 @@
 <template>
   <header class="header">
-    <img alt="Vue logo" src="../../assets/logo.png" class="logo" />
+    <router-link to="/">
+      <img alt="Vue logo" src="../../assets/logo.png" class="logo" />
+    </router-link>
 
     <div class="container">
-      <button class="btn nav-btn">Добавить карточку</button>
-      <button class="btn nav-btn">Добавить группу</button>
+      <router-link :to="{ path: '/add', query: { action: 'addTodo' } }">
+        <button class="btn nav-btn">Добавить карточку</button>
+      </router-link>
+
+      <router-link :to="{ path: '/add', query: { action: 'addNote' } }">
+        <button class="btn nav-btn">Добавить группу</button>
+      </router-link>
     </div>
   </header>
 </template>
@@ -29,5 +36,6 @@ export default {
   margin: 0.2rem 1rem;
   padding: 0.6rem;
   font-size: 1rem;
+  font-weight: 600;
 }
 </style>
