@@ -39,7 +39,7 @@ const actions = {
   },
 
   //апдейт группы
-  updateNote({ commit }, updatedTodo) {
+  updateTodo({ commit }, updatedTodo) {
     //старые
     let todos = JSON.parse(localStorage.getItem("todos"));
     todos = todos.map(
@@ -56,7 +56,7 @@ const mutations = {
   newTodo: (state, todo) => state.todos.unshift(todo),
   removeTodo: (state, id) =>
     (state.todos = state.todos.filter((todo) => todo.id !== id)),
-  updateTodo: (state, updatedTodo) => {
+  updateTodos: (state, updatedTodo) => {
     state.todos = state.todos.map((todo) =>
       todo.id === updatedTodo.id ? updatedTodo : todo
     );

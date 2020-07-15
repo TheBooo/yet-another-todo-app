@@ -5,12 +5,11 @@
   </div>
 </template>
 
-
 <script>
 import Header from "./components/layout/Header";
 
 export default {
-  components: { Header }
+  components: { Header },
 };
 </script>
 
@@ -33,6 +32,7 @@ body {
   font-family: var(--main-cursive-font);
   line-height: 1.2;
   letter-spacing: 0.1rem;
+  background-color: var(--dark-mint);
 }
 a {
   text-decoration: none;
