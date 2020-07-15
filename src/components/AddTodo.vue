@@ -52,14 +52,6 @@ export default {
 </script>
 
 <style scoped>
-input {
-  padding: 1rem;
-  margin: 0.2rem;
-  font-size: 1.4rem;
-  width: 60%;
-  border-radius: 0.3rem;
-  border: none;
-}
 .container-btns {
   margin: 1rem;
 }

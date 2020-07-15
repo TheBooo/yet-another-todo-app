@@ -37,6 +37,14 @@ body {
 a {
   text-decoration: none;
 }
+input {
+  padding: 1rem;
+  margin: 0.2rem;
+  font-size: 1.4rem;
+  width: 60%;
+  border-radius: 0.3rem;
+  border: none;
+}
 
 .btn {
   cursor: pointer;
