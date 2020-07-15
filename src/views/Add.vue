@@ -1,13 +1,15 @@
 <template>
-  <div>Add</div>
+  <div>
+    <AddTodo v-if="this.$route.query.action === 'addTodo'" />
+  </div>
 </template>
 
 <script>
+import AddTodo from "../components/AddTodo";
+
 export default {
   name: "Add",
-  created() {
-    console.log(this.$route.query.action);
-  }
+  components: { AddTodo }
 };
 </script>
 
