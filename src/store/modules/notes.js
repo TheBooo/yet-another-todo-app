@@ -7,7 +7,7 @@ const getters = {
 };
 
 const actions = {
-  //get all notes from local storage
+  //получить группы из локальной памяти
   getNotes({ commit }) {
     const notes = localStorage.getItem("notes")
       ? JSON.parse(localStorage.getItem("notes"))
@@ -16,37 +16,37 @@ const actions = {
     commit("setNotes", notes);
   },
 
-  //add single note
+  //добавить группу
   addNote({ commit }, note) {
-    //get old notes
+    //старые карточки
     const notes = localStorage.getItem("notes")
       ? JSON.parse(localStorage.getItem("notes"))
       : [];
 
-    notes.unshift(note); //add new one
-    localStorage.setItem("notes", JSON.stringify(notes)); //save
+    notes.unshift(note); //добавление
+    localStorage.setItem("notes", JSON.stringify(notes)); //сохранение
 
     commit("newNote", note);
   },
 
-  //delete note
+  //удалить группу
   deleteNote({ commit }, id) {
-    //get all notes from local storage
+    //старые
     let notes = JSON.parse(localStorage.getItem("notes"));
-    notes = notes.filter((note) => note.id !== id); //delete one
-    localStorage.setItem("notes", JSON.stringify(notes)); //save
+    notes = notes.filter((note) => note.id !== id); //удалить
+    localStorage.setItem("notes", JSON.stringify(notes)); //сохранить
 
     commit("removeNote", id);
   },
 
-  //update single note
+  //апдейт группы
   updateNote({ commit }, updatedNote) {
-    //get all notes from local storage
+    //старые
     let notes = JSON.parse(localStorage.getItem("notes"));
     notes = notes.map(
-      (note) => (note.id === updatedNote.id ? updatedNote : note) //update
+      (note) => (note.id === updatedNote.id ? updatedNote : note) //апдейт
     );
-    localStorage.setItem("notes", JSON.stringify(notes)); //save
+    localStorage.setItem("notes", JSON.stringify(notes)); //сохранить
 
     commit("updateNote", updatedNote);
   },
