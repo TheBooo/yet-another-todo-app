@@ -89,4 +89,22 @@ input {
   border-radius: 0.5rem;
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.is-completed {
+  text-decoration: line-through;
+}
+
+.note-container {
+  margin: 2rem auto;
+  padding: 1rem;
+  width: 60%;
+  max-width: 1160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--mint);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
 </style>

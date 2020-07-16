@@ -73,14 +73,14 @@ export default {
       }
     },
     submitNote() {
-      //check for whitespaces name
+      //проверка названия группы
       if (this.title.trim()) {
         const newNote = {
           id: uuid(),
           title: this.title,
           todos: this.todos,
         };
-        this.addNote(newNote);
+        this.addNote(newNote); //добавить
         this.$router.push("/");
       } else {
         this.notification = "Пожалуйста, введите заголовок";

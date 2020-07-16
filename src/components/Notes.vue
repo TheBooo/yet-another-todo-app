@@ -11,7 +11,12 @@
         <Delete />
       </button>
       <!-- todos -->
-      <div v-for="todo in note.todos" :key="todo.id" class="single-todo">
+      <div
+        v-for="todo in note.todos"
+        :key="todo.id"
+        class="single-todo"
+        :class="{ 'is-completed': todo.completed }"
+      >
         {{ todo.title }}
         <Check v-if="todo.completed === true" />
       </div>
@@ -79,19 +84,7 @@ export default {
 .notes-container {
   margin: 2rem auto;
 }
-.note-container {
-  margin: 2rem auto;
-  padding: 1rem;
-  width: 60%;
-  max-width: 1160px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--mint);
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  position: relative;
-}
+
 .btn-note {
   position: absolute;
   top: 10px;
@@ -121,6 +114,10 @@ export default {
   }
   .single-todo {
     flex-direction: column;
+    font-size: 1rem;
+  }
+  h1 {
+    font-size: 1.5rem;
   }
 }
 </style>

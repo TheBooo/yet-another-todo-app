@@ -13,7 +13,7 @@
       </div>
 
       <!-- title -->
-      <div class="todo-title" v-bind:class="{ 'is-completed': todo.completed }">
+      <div class="todo-title" :class="{ 'is-completed': todo.completed }">
         {{ todo.title }}
         <div v-if="todo.completed === true"><Check /></div>
       </div>
@@ -111,9 +111,6 @@ export default {
   flex-direction: row;
   font-size: 1.4rem;
   font-weight: 600;
-}
-.is-completed {
-  text-decoration: line-through;
 }
 
 .todo-checkbox {

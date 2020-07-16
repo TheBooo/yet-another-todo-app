@@ -4,6 +4,9 @@ const state = {
 
 const getters = {
   allNotes: (state) => state.notes,
+  singleNote: (state) => (id) => {
+    return state.notes.find((note) => note.id === id);
+  },
 };
 
 const actions = {
