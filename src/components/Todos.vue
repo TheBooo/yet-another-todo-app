@@ -12,6 +12,7 @@
         <label :for="todo.id">Завершено</label>
       </div>
 
+      <!-- title -->
       <div class="todo-title" v-bind:class="{ 'is-completed': todo.completed }">
         {{ todo.title }}
         <div v-if="todo.completed === true"><Check /></div>
@@ -35,6 +36,7 @@
         </div>
       </div>
     </div>
+    <!-- -->
   </div>
 </template>
 
@@ -101,6 +103,7 @@ export default {
   margin: 1rem;
   padding: 1rem;
 }
+
 .todo-title {
   display: flex;
   align-items: center;
@@ -113,8 +116,16 @@ export default {
   text-decoration: line-through;
 }
 
+.todo-checkbox {
+  display: flex;
+  align-items: center;
+}
+input[type="checkbox"] {
+  width: 10px;
+  height: 10px;
+}
 label {
-  margin: 0.5rem;
+  margin: 0.2rem;
   cursor: pointer;
 }
 
