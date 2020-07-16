@@ -19,10 +19,10 @@
 
       <!-- delete -->
       <div>
-        <router-link
-          :to="{ name: 'Move', params: { todoId: todo.id, noteId } }"
+        <router-link :to="{ name: 'Move', params: { note, todo } }">
+          <button class="btn"><FileMove /></button
         ></router-link>
-        <button class="btn"><FileMove /></button>
+
         <button @click="deleteTodo(i)" class="btn btn-delete">
           <Delete />
         </button>
