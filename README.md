@@ -1,24 +1,6 @@
-# vue-todo-2
+# yet-another-todo-app
 
-## Project setup
-```
-npm install
-```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Simple todo app with Vue
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Open - https://thebooo.github.io/yet-another-todo-app/dist/
