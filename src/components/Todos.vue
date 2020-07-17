@@ -15,7 +15,7 @@
           @click="markAsCompleted(todo)"
           :id="todo.id"
         />
-        <label :for="todo.id">Завершено</label>
+        <label :for="todo.id" class="checkbox-label">Завершено</label>
       </div>
 
       <!-- title -->
@@ -63,17 +63,18 @@ export default {
           a.title.localeCompare(b.title)
         );
       } else if (this.selectFilter === "Статусу") {
+        // по выполнению
         return [...this.allTodos].sort((a, b) => a.completed - b.completed);
       } else {
-        return this.allTodos;
+        return this.allTodos; //по дате
       }
-    }
+    },
   },
   data() {
     return {
       deleteOverlay: false,
       deleteId: "",
-      selectFilter: ""
+      selectFilter: "",
     };
   },
   methods: {
@@ -82,10 +83,13 @@ export default {
       this.deleteId = "";
       this.deleteOverlay = !this.deleteOverlay;
     },
+    //карточка выполнена
     markAsCompleted(todo) {
       todo.completed = !todo.completed;
       this.updateTodo(todo);
     },
+
+    //удаление карточки
     confirmDelete(id) {
       this.toggleOverlay();
       this.deleteId = id;
@@ -93,11 +97,11 @@ export default {
     removeTodo() {
       this.deleteTodo(this.deleteId);
       this.toggleOverlay();
-    }
+    },
   },
   created() {
     this.getTodos();
-  }
+  },
 };
 </script>
 
@@ -138,16 +142,21 @@ export default {
 .todo-checkbox {
   display: flex;
   align-items: center;
+  position: relative;
 }
 input[type="checkbox"] {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
 }
 label {
+  color: var(--accent);
+}
+.checkbox-label {
   margin: 0.2rem;
   margin-right: 1rem;
   cursor: pointer;
-  color: var(--accent);
+  /*position: absolute;
+  left: 11px;*/
 }
 
 select {

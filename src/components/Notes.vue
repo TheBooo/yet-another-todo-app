@@ -51,13 +51,13 @@ export default {
   data() {
     return {
       deleteOverlay: false,
-      deleteNoteId: {}
+      deleteNoteId: {},
     };
   },
   components: {
     PlaylistEdit,
     Delete,
-    Check
+    Check,
   },
   methods: {
     ...mapActions(["getNotes", "deleteNote"]),
@@ -65,6 +65,7 @@ export default {
       this.deleteOverlay = !this.deleteOverlay;
       this.deleteNoteId = {};
     },
+    //удаление группы
     confirmDelete(id) {
       this.toggleOverlay();
       this.deleteNoteId = id;
@@ -72,11 +73,11 @@ export default {
     removeNote() {
       this.deleteNote(this.deleteNoteId);
       this.toggleOverlay();
-    }
+    },
   },
   created() {
     this.getNotes();
-  }
+  },
 };
 </script>
 

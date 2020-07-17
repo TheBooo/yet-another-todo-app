@@ -31,11 +31,16 @@
       </div>
     </div>
 
-    <button @click="addTodoOverlay" class="btn btn-control">Добавить карточку</button>
+    <button @click="addTodoConfirmation" class="btn btn-control">
+      Добавить карточку
+    </button>
 
     <!-- control buttons -->
     <div class="buttons-container">
-      <button @click="deleteOverlay" class="btn btn-control btn-cancel">
+      <button
+        @click="deleteNoteConfirmation"
+        class="btn btn-control btn-cancel"
+      >
         Удалить карточку
         <Delete />
       </button>
@@ -81,15 +86,15 @@ export default {
   computed: mapGetters(["singleNote"]),
   props: {
     noteId: {
-      type: String
-    }
+      type: String,
+    },
   },
   data() {
     return {
       note: {},
       showOverlay: false,
       action: "",
-      deleteTodoNum: ""
+      deleteTodoNum: "",
     };
   },
   methods: {
@@ -97,26 +102,29 @@ export default {
     toggleOverlay() {
       this.showOverlay = !this.showOverlay;
     },
-    addTodoOverlay() {
+    // добавить карточку
+    addTodoConfirmation() {
       this.action = "addTodo";
       this.toggleOverlay();
     },
     addTodo(todo) {
+      // проверка whitespace'ов
       if (todo.trim()) {
         const newTodo = {
           id: uuid(),
           title: todo,
-          completed: false
+          completed: false,
         };
         this.note.todos.unshift(newTodo);
         this.toggleOverlay();
       }
     },
+    //картчока выполнена
     markAsCompleted(i) {
       this.note.todos[i].completed = !this.note.todos[i].completed;
     },
+    //удаление карточки
     deleteTodoConfirmation(i) {
-      //this.note.todos.splice(i, 1);
       this.deleteTodoNum = i;
       this.action = "deleteTodo";
       this.toggleOverlay();
@@ -126,24 +134,26 @@ export default {
       this.toggleOverlay();
     },
 
+    // сохранение изменений
     saveChanges() {
       this.updateNote(this.note);
       this.$router.push("/");
     },
 
-    deleteOverlay() {
+    // удаление группы
+    deleteNoteConfirmation() {
       this.action = "deleteNote";
       this.toggleOverlay();
     },
     removeNote() {
       this.deleteNote(this.noteId);
       this.$router.push("/");
-    }
+    },
   },
   created() {
     this.getNotes();
     this.note = this.singleNote(this.noteId);
-  }
+  },
 };
 </script>
 
