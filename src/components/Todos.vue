@@ -1,6 +1,11 @@
 <template>
   <div class="todos-container">
-    <div v-for="todo in allTodos" :key="todo.id" class="single-todo">
+    <label for="sort">Сортировать карточки по:</label>
+    <select v-model="selectFilter" class="select-filter" id="sort">
+      <option>Имени</option>
+      <option>Статусу</option>
+    </select>
+    <div v-for="todo in filteredTodos" :key="todo.id" class="single-todo">
       <!-- checkbox  -->
       <div class="todo-checkbox">
         <input
@@ -15,7 +20,9 @@
       <!-- title -->
       <div class="todo-title" :class="{ 'is-completed': todo.completed }">
         {{ todo.title }}
-        <div v-if="todo.completed === true"><Check /></div>
+        <div v-if="todo.completed === true">
+          <Check />
+        </div>
       </div>
 
       <!-- delete -->
@@ -30,9 +37,7 @@
         <div>Вы уверены, что хотите удалить эту карточку?</div>
         <div>
           <button @click="removeTodo" class="btn btn-overlay">Удалить</button>
-          <button @click="toggleOverlay" class="btn btn-overlay ">
-            Отмена
-          </button>
+          <button @click="toggleOverlay" class="btn btn-overlay">Отмена</button>
         </div>
       </div>
     </div>
@@ -48,11 +53,26 @@ import Check from "vue-material-design-icons/Check";
 export default {
   name: "Todos",
   components: { Delete, Check },
-  computed: mapGetters(["allTodos"]),
+  computed: {
+    ...mapGetters(["allTodos"]),
+    filteredTodos: function() {
+      // сортировка по имени
+      if (this.selectFilter === "Имени") {
+        return [...this.allTodos].sort((a, b) =>
+          a.title.localeCompare(b.title)
+        );
+      } else if (this.selectFilter === "Статусу") {
+        return [...this.allTodos].sort((a, b) => a.completed - b.completed);
+      } else {
+        return this.allTodos;
+      }
+    }
+  },
   data() {
     return {
       deleteOverlay: false,
       deleteId: "",
+      selectFilter: ""
     };
   },
   methods: {
@@ -72,11 +92,11 @@ export default {
     removeTodo() {
       this.deleteTodo(this.deleteId);
       this.toggleOverlay();
-    },
+    }
   },
   created() {
     this.getTodos();
-  },
+  }
 };
 </script>
 

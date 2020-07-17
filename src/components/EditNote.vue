@@ -20,8 +20,10 @@
       <!-- delete -->
       <div>
         <router-link :to="{ name: 'Move', params: { note, todo } }">
-          <button class="btn"><FileMove /></button
-        ></router-link>
+          <button class="btn">
+            <FileMove />
+          </button>
+        </router-link>
 
         <button @click="deleteTodo(i)" class="btn btn-delete">
           <Delete />
@@ -29,22 +31,14 @@
       </div>
     </div>
 
-    <button @click="addTodoOverlay" class="btn btn-control">
-      Добавить карточку
-    </button>
+    <button @click="addTodoOverlay" class="btn btn-control">Добавить карточку</button>
 
     <!-- control buttons -->
     <div class="buttons-container">
-      <button @click="deleteOverlay" class="btn btn-control btn-cancel">
-        Delete note
-      </button>
-      <button @click="saveChanges" class="btn btn-control">
-        Save
-      </button>
+      <button @click="deleteOverlay" class="btn btn-control btn-cancel">Delete note</button>
+      <button @click="saveChanges" class="btn btn-control">Save</button>
       <router-link to="/">
-        <button class="btn btn-control btn-cancel">
-          Выйти
-        </button>
+        <button class="btn btn-control btn-cancel">Выйти</button>
       </router-link>
     </div>
     <!-- end of control buttons -->
@@ -75,14 +69,14 @@ export default {
   computed: mapGetters(["singleNote"]),
   props: {
     noteId: {
-      type: String,
-    },
+      type: String
+    }
   },
   data() {
     return {
       note: {},
       showOverlay: false,
-      action: "",
+      action: ""
     };
   },
   methods: {
@@ -99,7 +93,7 @@ export default {
         const newTodo = {
           id: uuid(),
           title: todo,
-          completed: false,
+          completed: false
         };
         this.note.todos.unshift(newTodo);
         this.toggleOverlay();
@@ -124,12 +118,12 @@ export default {
     removeNote() {
       this.deleteNote(this.noteId);
       this.$router.push("/");
-    },
+    }
   },
   created() {
     this.getNotes();
     this.note = this.singleNote(this.noteId);
-  },
+  }
 };
 </script>
 
@@ -164,5 +158,10 @@ input[type="checkbox"] {
 label {
   margin: 0.2rem;
   cursor: pointer;
+}
+@media (max-width: 992px) {
+  .single-todo {
+    width: 100%;
+  }
 }
 </style>

@@ -9,7 +9,7 @@
 import Header from "./components/layout/Header";
 
 export default {
-  components: { Header },
+  components: { Header }
 };
 </script>
 
@@ -106,5 +106,11 @@ input {
   background-color: var(--mint);
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   position: relative;
+}
+
+@media (max-width: 992px) {
+  .note-container {
+    width: 100%;
+  }
 }
 </style>
