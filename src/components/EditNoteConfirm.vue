@@ -8,28 +8,26 @@
       Добавить карточку
       <input type="text" v-model="newTodo" />
       <div>
-        <button
-          type="button"
-          class="btn btn-control"
-          @click="$emit('addTodo', newTodo)"
-        >
-          Add
-        </button>
-        <button type="button" class="btn btn-control" @click="$emit('cancel')">
-          Cancel
-        </button>
+        <button type="button" class="btn btn-control" @click="$emit('addTodo', newTodo)">Добавить</button>
+        <button type="button" class="btn btn-control" @click="$emit('cancel')">Отмена</button>
       </div>
     </form>
 
-    <!-- delete note confirmation -->
+    <!-- удалить группу -->
     <div class="overlay-content" v-if="action === 'deleteNote'">
-      Are you sure you want to
-      {{ action }}?
+      Вы уверены, что хотите удалить данную группу?
       <div>
-        <button class="btn btn-control" @click="$emit('deleteNote')">
-          Confirm
-        </button>
-        <button class="btn btn-control" @click="$emit('cancel')">Cancel</button>
+        <button class="btn btn-control" @click="$emit('deleteNote')">Подтвердить</button>
+        <button class="btn btn-control" @click="$emit('cancel')">Отмена</button>
+      </div>
+    </div>
+
+    <!-- удалить карточку из группы -->
+    <div class="overlay-content" v-if="action === 'deleteTodo'">
+      Вы уверены, что хотите удалить данную карточку?
+      <div>
+        <button class="btn btn-control" @click="$emit('deleteTodo')">Подтвердить</button>
+        <button class="btn btn-control" @click="$emit('cancel')">Отмена</button>
       </div>
     </div>
   </div>
@@ -39,13 +37,13 @@
 export default {
   name: "EditNoteConfirm",
   props: {
-    action: String,
+    action: String
   },
   data() {
     return {
-      newTodo: "",
+      newTodo: ""
     };
-  },
+  }
 };
 </script>
 

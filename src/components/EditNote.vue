@@ -25,7 +25,7 @@
           </button>
         </router-link>
 
-        <button @click="deleteTodo(i)" class="btn btn-delete">
+        <button @click="deleteTodoConfirmation(i)" class="btn btn-delete">
           <Delete />
         </button>
       </div>
@@ -50,6 +50,7 @@
       v-on:cancel="toggleOverlay()"
       v-on:addTodo="addTodo"
       v-on:deleteNote="removeNote"
+      v-on:deleteTodo="deleteTodo"
     />
   </div>
 </template>
@@ -76,7 +77,8 @@ export default {
     return {
       note: {},
       showOverlay: false,
-      action: ""
+      action: "",
+      deleteTodoNum: ""
     };
   },
   methods: {
@@ -102,8 +104,15 @@ export default {
     markAsCompleted(i) {
       this.note.todos[i].completed = !this.note.todos[i].completed;
     },
-    deleteTodo(i) {
-      this.note.todos.splice(i, 1);
+    deleteTodoConfirmation(i) {
+      //this.note.todos.splice(i, 1);
+      this.deleteTodoNum = i;
+      this.action = "deleteTodo";
+      this.toggleOverlay();
+    },
+    deleteTodo() {
+      this.note.todos.splice(this.deleteTodoNum, 1);
+      this.toggleOverlay();
     },
 
     saveChanges() {
