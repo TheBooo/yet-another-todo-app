@@ -39,7 +39,10 @@
         Удалить карточку
         <Delete />
       </button>
-      <button @click="saveChanges" class="btn btn-control">Сохранить изменения</button>
+      <button @click="saveChanges" class="btn btn-control">
+        Сохранить изменения
+        <ContentSave />
+      </button>
       <router-link to="/">
         <button class="btn btn-control btn-cancel">
           Выйти
@@ -70,10 +73,11 @@ import EditNoteConfirm from "./EditNoteConfirm";
 import Delete from "vue-material-design-icons/Delete";
 import FileMove from "vue-material-design-icons/FileMove";
 import Logout from "vue-material-design-icons/Logout";
+import ContentSave from "vue-material-design-icons/ContentSave";
 
 export default {
   name: "EditNote",
-  components: { EditNoteConfirm, Delete, FileMove, Logout },
+  components: { EditNoteConfirm, Delete, FileMove, Logout, ContentSave },
   computed: mapGetters(["singleNote"]),
   props: {
     noteId: {
