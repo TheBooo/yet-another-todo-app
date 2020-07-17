@@ -149,13 +149,16 @@ export default {
 
 <style scoped>
 .btn-control {
-  background-color: grey;
+  background-color: var(--accent);
   margin: 0.5rem;
   font-size: 1rem;
   padding: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.btn-control:hover {
+  background-color: var(--text-color);
 }
 .buttons-container {
   width: 100%;
@@ -168,8 +171,8 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  background-color: var(--yellow);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  background-color: var(--bg-accent);
   margin: 1rem;
   padding: 0.5rem;
 }

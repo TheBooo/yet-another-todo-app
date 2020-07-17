@@ -21,6 +21,12 @@ export default {
   --mint: #a1d2b4;
   --grey: #9dbcaa;
   --transition: all 0.3s ease-in-out;
+
+  /**/
+  --bg: #242526;
+  --bg-accent: #003745;
+  --accent: #3698b7;
+  --text-color: #dadce1;
 }
 
 * {
@@ -32,7 +38,7 @@ body {
   font-family: var(--main-cursive-font);
   line-height: 1.2;
   letter-spacing: 0.1rem;
-  background-color: var(--dark-mint);
+  background-color: var(--bg);
 }
 a {
   text-decoration: none;
@@ -50,15 +56,20 @@ input {
   cursor: pointer;
   padding: 0.2rem;
   margin: 0.2rem;
-  background-color: var(--mint);
-  color: var(--dark-green);
+  background-color: var(--accent);
+  color: var(--bg);
   transition: var(--transition);
   border: none;
   border-radius: 0.3rem;
 }
 .btn:hover {
-  background-color: var(--yellow);
-  color: var(--dark-green);
+  background-color: var(--text-color);
+}
+.btn-overlay {
+  background-color: var(--accent);
+  font-size: 1rem;
+  margin: 1rem;
+  padding: 0.5rem;
 }
 
 .overlay {
@@ -78,7 +89,8 @@ input {
 }
 .overlay-content {
   z-index: 21;
-  background-color: var(--dark-mint);
+  background-color: var(--bg-accent);
+  color: var(--text-color);
   padding: 1rem;
   width: 90%;
   max-width: 1024px;
@@ -103,7 +115,8 @@ input {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: var(--mint);
+  background-color: var(--bg-accent);
+  color: var(--text-color);
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   position: relative;
 }

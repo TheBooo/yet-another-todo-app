@@ -2,7 +2,9 @@
   <div class="notes-container">
     <div v-for="note in allNotes" :key="note.id" class="note-container">
       <router-link :to="{ name: 'Edit', params: { id: note.id, note } }">
-        <button class="btn btn-note btn-edit"><PlaylistEdit /></button>
+        <button class="btn btn-note btn-edit">
+          <PlaylistEdit />
+        </button>
       </router-link>
       <!-- title -->
       <h1 class="note-title">{{ note.title }}</h1>
@@ -28,9 +30,7 @@
         <div>Вы уверены, что хотите удалить эту группу?</div>
         <div>
           <button @click="removeNote" class="btn btn-overlay">Удалить</button>
-          <button @click="toggleOverlay" class="btn btn-overlay ">
-            Отмена
-          </button>
+          <button @click="toggleOverlay" class="btn btn-overlay">Отмена</button>
         </div>
       </div>
     </div>
@@ -51,13 +51,13 @@ export default {
   data() {
     return {
       deleteOverlay: false,
-      deleteNoteId: {},
+      deleteNoteId: {}
     };
   },
   components: {
     PlaylistEdit,
     Delete,
-    Check,
+    Check
   },
   methods: {
     ...mapActions(["getNotes", "deleteNote"]),
@@ -72,11 +72,11 @@ export default {
     removeNote() {
       this.deleteNote(this.deleteNoteId);
       this.toggleOverlay();
-    },
+    }
   },
   created() {
     this.getNotes();
-  },
+  }
 };
 </script>
 
@@ -88,6 +88,11 @@ export default {
 .btn-note {
   position: absolute;
   top: 10px;
+  background: none;
+  color: var(--accent);
+}
+.btn-note:hover {
+  color: var(--text-color);
 }
 .btn-edit {
   left: 10px;
@@ -95,9 +100,12 @@ export default {
 .btn-delete {
   right: 10px;
 }
+.btn-delete:hover {
+  color: darkred;
+}
 
 .single-todo {
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
   width: 100%;
   display: flex;
   justify-content: center;
@@ -105,7 +113,7 @@ export default {
   margin: 0.5rem;
   padding: 0.5rem;
   font-size: 1.3rem;
-  background-color: var(--yellow);
+  background-color: var(--bg-accent);
 }
 
 @media (max-width: 992px) {

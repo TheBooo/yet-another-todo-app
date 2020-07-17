@@ -24,7 +24,7 @@ export default {
 
 <style scoped>
 .header {
-  background-color: var(--grey);
+  background-color: var(--bg-accent);
   padding: 0.5rem;
   text-align: center;
 }

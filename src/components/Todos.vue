@@ -4,6 +4,7 @@
     <select v-model="selectFilter" class="select-filter" id="sort">
       <option>Имени</option>
       <option>Статусу</option>
+      <option>Дате</option>
     </select>
     <div v-for="todo in filteredTodos" :key="todo.id" class="single-todo">
       <!-- checkbox  -->
@@ -110,7 +111,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: var(--mint);
+  background-color: var(--bg-accent);
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 .single-todo {
@@ -118,8 +119,8 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  background-color: var(--yellow);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  background-color: var(--bg-accent);
   margin: 1rem;
   padding: 1rem;
 }
@@ -131,6 +132,7 @@ export default {
   flex-direction: row;
   font-size: 1.4rem;
   font-weight: 600;
+  color: var(--text-color);
 }
 
 .todo-checkbox {
@@ -143,25 +145,31 @@ input[type="checkbox"] {
 }
 label {
   margin: 0.2rem;
+  margin-right: 1rem;
   cursor: pointer;
+  color: var(--accent);
+}
+
+select {
+  background-color: var(--bg);
+  color: var(--accent);
+  border: none;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  outline: none;
+  padding: 0.4rem;
 }
 
 .btn-delete {
   background: none;
-  color: var(--dark-green);
+  color: var(--accent);
 }
 .btn-delete:hover {
   color: darkred;
 }
 
-.btn-overlay {
-  background-color: var(--yellow);
-  font-size: 1rem;
-  margin: 1rem;
-  padding: 0.5rem;
-}
 .btn-overlay:hover {
-  background-color: var(--mint);
+  background-color: var(--text-color);
 }
 
 @media (max-width: 992px) {
