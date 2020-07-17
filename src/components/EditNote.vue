@@ -35,10 +35,16 @@
 
     <!-- control buttons -->
     <div class="buttons-container">
-      <button @click="deleteOverlay" class="btn btn-control btn-cancel">Delete note</button>
-      <button @click="saveChanges" class="btn btn-control">Save</button>
+      <button @click="deleteOverlay" class="btn btn-control btn-cancel">
+        Удалить карточку
+        <Delete />
+      </button>
+      <button @click="saveChanges" class="btn btn-control">Сохранить изменения</button>
       <router-link to="/">
-        <button class="btn btn-control btn-cancel">Выйти</button>
+        <button class="btn btn-control btn-cancel">
+          Выйти
+          <Logout />
+        </button>
       </router-link>
     </div>
     <!-- end of control buttons -->
@@ -63,10 +69,11 @@ import EditNoteConfirm from "./EditNoteConfirm";
 
 import Delete from "vue-material-design-icons/Delete";
 import FileMove from "vue-material-design-icons/FileMove";
+import Logout from "vue-material-design-icons/Logout";
 
 export default {
   name: "EditNote",
-  components: { EditNoteConfirm, Delete, FileMove },
+  components: { EditNoteConfirm, Delete, FileMove, Logout },
   computed: mapGetters(["singleNote"]),
   props: {
     noteId: {
@@ -142,7 +149,16 @@ export default {
   margin: 0.5rem;
   font-size: 1rem;
   padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+.buttons-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .single-todo {
   width: 100%;
   display: flex;
@@ -171,6 +187,10 @@ label {
 @media (max-width: 992px) {
   .single-todo {
     width: 100%;
+    flex-direction: column;
+  }
+  .buttons-container {
+    flex-wrap: wrap;
   }
 }
 </style>
